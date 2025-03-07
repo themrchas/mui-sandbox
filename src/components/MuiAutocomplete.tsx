@@ -1,4 +1,4 @@
-import { Stack, Autocomplete, TextField, Box } from '@mui/material'
+import { Stack, Autocomplete, TextField, Box, InputAdornment } from '@mui/material'
 import { Typography } from '@mui/material'
 import { useState, useEffect } from 'react';
 
@@ -37,17 +37,19 @@ export const MuiAutocomplete = () => {
     //Track the chosen pet
     const [chosenMonth,setChosenMonth] = useState<AutoCompleteMonth | null>(null);
 
-    const [monthValues,setMonth]
+    //Used for the months example.  
+    const [monthValues,setMonthValues] = useState<AutoCompleteMonth[]>([])
 
-    let monthValues: Array<AutoCompleteMonth | null> = [];
-
+    
     useEffect(() => {
 
         const months = ['January','February','March','April','May','June','July'];
 
-        monthValues = months.map( (month:string,index:number) => ({ month:month, id:index}) );
+       let monthObjects  = months.map( (month:string,index:number) => ({ month:month, id:index}) );
 
         console.log('useEffect monthValues are',monthValues);
+
+        setMonthValues(monthObjects);
         
    // },[]);
     });
@@ -173,14 +175,26 @@ export const MuiAutocomplete = () => {
                     <Typography sx={{textAlign: 'left'}}>{chosenPet !== null ? typeof chosenPet !== "string" ? `Chosen pet is ${chosenPet.type}`: `Chosen pet is ${chosenPet}` : "No pet selected"}</Typography>
                 </Box>
                 <Box>
-               
+                <Typography sx={{ my: 3, textAlign: 'left' }} >
+                        This example saves the chosen value to a state variable.
+                    </Typography>
                 <Autocomplete
                         options={monthValues}
                         getOptionLabel={(option) => option == null ? "money": option.month}
-                        renderInput={(params) => <TextField {...params} label="Months" />}
+                        renderInput={(params) => <TextField {...params} label="Months" 
+                        error={chosenMonth == null}
+                        helperText={chosenMonth == null ? "Error - make choice" : ""}
+                       /*     slotProps={{
+                                input: {startAdornment: <InputAdornment position="start">*</InputAdornment>}
+                            }}
+                       */ 
+                        
+                        />}
                         sx={{ width: 1 / 2 }}
                         value={chosenMonth}
                         onChange={handleMonthChange}
+                        
+                        
                         
                     />
                     <Typography sx={{textAlign: 'left'}}>{chosenMonth !== null ?  `Chosen month is ${chosenMonth.month}` : "No month selected"}</Typography>
