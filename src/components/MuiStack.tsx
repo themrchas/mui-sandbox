@@ -33,10 +33,10 @@ export const MuiStack = () => {
     const [buttonSelected, setButtonSelected] = useState<StackDirection>(StackDirection.COLUMN);
 
     /* The IJustifyContent interface requires the state to have a property called justifyContent of type JustifyContent. 
-    *Since this structure is defined as an object, the initial state must match that shape.
+    *  Since this structure is defined as an object, the initial state must match that shape.
     *
-    * Using an object allows you to expand the state easily in the future. For instance, if you decide to add more properties 
-    * like alignItems or direction to your IJustifyContent interface, the object structure can naturally accommodate these changes:
+    *  Using an object allows you to expand the state easily in the future. For instance, if you decide to add more properties 
+    *  like alignItems or direction to your IJustifyContent interface, the object structure can naturally accommodate these changes:
     *
     *   interface IJustifyContent {
     *       justifyContent: JustifyContent;

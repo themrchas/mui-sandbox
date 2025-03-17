@@ -8,6 +8,7 @@ import { MuiCheckbox } from './components/MuiCheckbox';
 import { MuiAutocomplete } from './components/MuiAutocomplete';
 import { MuiBox } from './components/MuiBox';
 import { MuiStack } from './components/MuiStack';
+import { MuiGrid } from './components/MuiGrid';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
     {/* <MuiCheckbox /> */}
     {/* <MuiAutocomplete /> */}
    {/* <MuiBox /> */}
-    <MuiStack /> 
+  {/*   <MuiStack />  */}
+  <MuiGrid></MuiGrid>
       
     </div>
   );
